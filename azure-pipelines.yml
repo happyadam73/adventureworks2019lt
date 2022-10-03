@@ -1,0 +1,44 @@
+# Variable 'Platform' was defined in the Variables tab
+trigger:
+  branches:
+    include:
+    - refs/heads/develop
+    - refs/heads/master
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: refs/heads/main
+jobs:
+- job: Job_1
+  displayName: Build Agent
+  pool:
+    vmImage: windows-2019
+  steps:
+  - checkout: self
+    clean: true
+    fetchTags: false
+  - task: VSBuild@1
+    displayName: Build solution Files
+    inputs:
+      solution: AdventureWorks2019LT.sln
+      vsVersion: 16.0
+      platform: $(Platform)
+      configuration: $(BuildConfiguration)
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)/$(Build.SourceBranchName)'
+    inputs:
+      SourceFolder: AdventureWorks2019LT
+      Contents: >
+        **\bin\$(BuildConfiguration)\*.dacpac
+
+        **\*.publish.xml
+
+        **\*.ps1
+      TargetFolder: $(Build.ArtifactStagingDirectory)/$(Build.SourceBranchName)
+      CleanTargetFolder: true
+      flattenFolders: true
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: Database'
+    inputs:
+      ArtifactName: Database
