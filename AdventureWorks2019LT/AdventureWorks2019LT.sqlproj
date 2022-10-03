@@ -163,4 +163,7 @@
     <Build Include="SalesLT\XMLSchemaCollections\ProductDescriptionSchemaCollection.sql" />
     <Build Include="ExtendedProperties.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="AdventureWorks2019LT.publish.xml" />
+  </ItemGroup>
 </Project>
