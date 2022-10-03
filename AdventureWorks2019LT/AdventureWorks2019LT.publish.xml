@@ -5,6 +5,16 @@
     <TargetDatabaseName>AdventureWorks2019LT</TargetDatabaseName>
     <DeployScriptFileName>AdventureWorks2019LT.sql</DeployScriptFileName>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
+    <ScriptDatabaseOptions>False</ScriptDatabaseOptions>
+    <UnmodifiableObjectWarnings>False</UnmodifiableObjectWarnings>
+    <DropObjectsNotInSource>False</DropObjectsNotInSource>
+    <DoNotDropFilegroups>True</DoNotDropFilegroups>
+    <DoNotDropLogins>True</DoNotDropLogins>
+    <DoNotDropPermissions>True</DoNotDropPermissions>
+    <DoNotDropRoleMembership>True</DoNotDropRoleMembership>
+    <DoNotDropServerRoleMembership>True</DoNotDropServerRoleMembership>
+    <DoNotDropServerRoles>True</DoNotDropServerRoles>
+    <DoNotDropUsers>True</DoNotDropUsers>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>
